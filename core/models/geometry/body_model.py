@@ -1,11 +1,6 @@
-# Python libraries
-from dataclasses import dataclass
-
 # Constant values
 from core.models.geometry.constants import SURFACE_ROUGHNESS_DEFAULT
 
-
-@dataclass()
 class BodyModel:
 
     height: float = 0.0

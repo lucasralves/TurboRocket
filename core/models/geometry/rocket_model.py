@@ -1,6 +1,5 @@
 # Python libraries
 from typing import List
-from dataclasses import dataclass
 
 # Models
 from core.models.geometry.nose_model import NoseModel
@@ -8,7 +7,6 @@ from core.models.geometry.body_model import BodyModel
 from core.models.geometry.transition_model import TransitionModel
 from core.models.geometry.fin_model import FinModel
 
-@dataclass()
 class RocketModel:
 
     nose: NoseModel

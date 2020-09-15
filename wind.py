@@ -4,7 +4,7 @@
 
 ########################################################################
 # Python libraries
-from dataclasses import dataclass
+from typing import List
 
 # Simulation settings
 from core.simulation.wind_settings import WindSettings
@@ -35,7 +35,6 @@ windModel = WindSettings(
 # altitude - meters
 # Output
 # speed - meters per second
-@dataclass()
-def wind_settings(time: float, altitude: float) -> float:
+def wind_settings(time: float, altitude: float) -> List[float]:
     return 0
 

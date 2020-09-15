@@ -1,12 +1,7 @@
-# Python libraries
-from dataclasses import dataclass
-
 # Constant values
 from core.models.geometry.constants import SURFACE_ROUGHNESS_DEFAULT
 from core.models.geometry.constants import NOSE_DEFAULT_GEOMETRY
 
-
-@dataclass()
 class NoseModel:
 
     height: float = 0.0
