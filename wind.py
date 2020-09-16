@@ -23,7 +23,7 @@ WIND_REF_SURFACE_ROUGHNESS = 0.1    # log
 ########################################################################
 
 # Class
-windModel = WindSettings(
+wind_model = WindSettings(
     speed_ref=WIND_REF_SPEED,
     height_ref=WIND_REF_HEIGHT,
     exponent=WIND_REF_EXPONENT,
@@ -34,7 +34,14 @@ windModel = WindSettings(
 # time - seconds
 # altitude - meters
 # Output
-# speed - meters per second
+# speed - meters per second, [x, y] components
 def wind_settings(time: float, altitude: float) -> List[float]:
-    return 0
+
+    wind_x = wind_model.powerModel(altitude=altitude)
+    wind_y = 2.0
+
+    if 500 < altitude < 700:
+        wind_y = 5.0
+
+    return [wind_x, wind_y]
 

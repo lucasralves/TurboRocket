@@ -11,25 +11,13 @@ import core.solve as solve
 # LAUNCH_ANGLE: initial launch angle in degrees [between vertical axis and rocket longitudinal axis]
 
 ####################################################################################################
-# Parameters
-from core.models.geometry.body_model import BodyModel
-from core.models.geometry.fin_model import FinModel
-from core.models.geometry.nose_model import NoseModel
-from core.models.geometry.transition_model import TransitionModel
+# Packages
+import core.solve
 
+####################################################################################################
+# Parameters
 LAUNCH_ALTITUDE: float = 0
 LAUNCH_ANGLE: float = 0
 
-# Files
-import rocket
-import wind
-
-from core.simulation.wind_settings import WindSettings
-
-w = WindSettings()
-
-print(w.logarithmicModel(0))
-
-
-# Solution
-#solve.simulate(rocket, wind, LAUNCH_ANGLE, LAUNCH_ALTITUDE)
+# Solve
+solve.run()
