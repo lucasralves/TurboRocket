@@ -1,0 +1,29 @@
+from aenum import Enum, auto
+
+TROPOSPHERE_INITIAL_HEIGHT = 0.0
+TROPOSPHERE_FINAL_HEIGHT = 11000
+
+LOW_STRATOSPHERE_INITIAL_HEIGHT = 11000
+LOW_STRATOSPHERE_FINAL_HEIGHT = 25000
+
+HEIGHT_STRATOSPHERE_INITIAL_HEIGHT = 25000
+HEIGHT_STRATOSPHERE_FINAL_HEIGHT = 47000
+
+class AtmosphereZone(Enum):
+    NONE: auto()
+    TROPOSPHERE = auto()
+    LOW_STRATOSPHERE = auto()
+    HEIGHT_STRATOSPHERE = auto()
+
+    @classmethod
+    def getZone(self, altitude: float) -> AtmosphereZone:
+        if TROPOSPHERE_INITIAL_HEIGHT < altitude < TROPOSPHERE_FINAL_HEIGHT:
+            return self.TROPOSPHERE
+        
+        if LOW_STRATOSPHERE_INITIAL_HEIGHT < altitude < LOW_STRATOSPHERE_FINAL_HEIGHT:
+            return self.LOW_STRATOSPHERE
+
+        if HEIGHT_STRATOSPHERE_INITIAL_HEIGHT < altitude < HEIGHT_STRATOSPHERE_FINAL_HEIGHT:
+            return self.HEIGHT_STRATOSPHERE
+
+        return self.NONE

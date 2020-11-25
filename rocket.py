@@ -13,11 +13,11 @@
 from typing import List
 
 # Models
-from core.models.geometry.body_model import BodyModel
-from core.models.geometry.fin_model import FinModel
-from core.models.geometry.nose_model import NoseModel
-from core.models.geometry.transition_model import TransitionModel
-from core.models.geometry.rocket_model import RocketModel
+from core.models.rocket.body_model import BodyModel
+from core.models.rocket.fin_model import FinModel
+from core.models.rocket.nose_model import NoseModel
+from core.models.rocket.transition_model import TransitionModel
+from core.models.rocket.rocket_model import RocketModel
 
 ###########################################################################################
 # Modify the methods below and set the correct geometry
@@ -69,6 +69,8 @@ def getFins() -> List[FinModel]:
     ]
     return fins
 
+###########################################################################################
+# Rocket geometry
 def getRocket() -> RocketModel:
     rocket = RocketModel(
         nose=getNose(),
