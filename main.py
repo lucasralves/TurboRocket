@@ -5,7 +5,7 @@
 # Scripts
 # wind.py - wind implementation
 # rocket.py - rocket geometry
-# engine.py - engine thrust implementation
+# thrust.py - engine thrust implementation
 # control.py - thrust vectoring control parameters
 
 
@@ -18,32 +18,37 @@
 # Packages
 
 # Solve
-from core.simulation.solve import solve
+from core.modules.simulation.solve import solve
 
 # Models
-from core.models.simulation.input_model import InputModel
-from core.models.math.vector_model import Vector
-
-####################################################################################################
-# Inputs
+from core.utils.math.models.vector_model import Vector
+from core.modules.simulation.models.input_model import Input, Forces, InitialCondition
+import forces
 
 # Rocket
 import rocket
 
-# Launch
-LAUNCH_RAIL_LENGTH = 10
-
-# Environment
-
-
-# Forces
-
-# Initial conditions
-initial_condition = InputModel(
-    position=Vector(x=0, y=0, z=0),
-    velocity=Vector(x=0, y=0, z=0),
-    altitude=0.0
+####################################################################################################
+# Inputs
+inputs = Input(
+    # Forces
+    forces=Forces(
+        weight=forces.weight,
+        thrust=forces.thrust,
+        drag=forces.drag,
+        parachute_drag=forces.parachute_drag
+    ),
+    # Initial Conditions
+    initial_condition=InitialCondition(
+        velocity=Vector(x=0, y=0, z=0),
+        position=Vector(x=0, y=0, z=0),
+        atitude=Vector(x=0, y=0, z=1)
+    ),
+    # Rocket
+    rocket=rocket.getRocket(),
+    # Launch Rail Length
+    launch_rail_length=10
 )
 
 # Solve
-solve(y0=initial_condition, launch_rail_length=LAUNCH_RAIL_LENGTH)
+solve(y0=inputs)
